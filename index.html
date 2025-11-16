@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>심혜원 졸업전시 아카이브</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<nav class="nav">
+			<a class="nav__logo" href="#home">HYEWON ARCHIVE</a>
+			<ul class="nav__links">
+				<li><a href="#home">Home</a></li>
+				<li><a href="#about">About</a></li>
+				<li><a href="#artwork">Artwork</a></li>
+				<li><a href="#artist">Artist</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<section id="home" class="section section--home">
+			<div class="home__inner">
+				<h1 class="title">심혜원 졸업 작품 아카이브</h1>
+				<p class="desc">Sim Hyewon 2024-2025 Artwork Archive </p>
+				<a class="scroll-down" href="#artwork" aria-label="Artwork로 스크롤">↓</a>
+			</div>
+		</section>
+
+		<section id="about" class="section section--about">
+			<h1>심혜원, &lt;안녕히 계세요&gt; 외 작품 10</h1>
+            <p>&nbsp;</p>
+			<p>신체는 숨이 붙어 있는 한 결코 떼어낼 수도, 잃어버릴 수도 없는 유일한 존재이며 무엇도 개입할 수 없다고 믿었다.<br> 
+                하지만 보이지 않는 사회적, 정신적 균열들이 나와 나의 신체를 멀어지게 하거나 잃게 한다.<br> 
+                 그리고 나도 모르게 내 몸에서 떨어져 나온 각질과 염증들이 제3의 일부가 되어 다시 태어난다. <br> 
+                 누군가의 염증과 정신 또한 이미 나의 신체 속에서, 타인의 안에서 재탄생 하고 동시에 죽어가고 있다. <br> 
+                 나는 그 중에서 소멸과 회복, 염증과 용서로 덧대어지는 순환에 집중한다. <br> 
+                 다양한 촬영기법의 합성과 불규칙적으로 교차되는 반복된 수작업은 이러한 흐름을 포착하기 위함이다.</p>
+		</section>
+
+		<section id="artwork" class="section section--artwork">
+			<h2 class="sr-only">Artwork</h2>
+			<div class="artworks-grid">
+				<!-- 각 아이템은 이미지가 있으면 data-img로 경로를 지정하세요 (예: assets/images/a1.jpg) -->
+				<button class="artwork" data-title="a1" data-img="assets/images/a1.png"><span>a1</span></button>
+				<button class="artwork" data-title="a2" data-img="assets/images/a2.png"><span>a2</span></button>
+				<button class="artwork" data-title="a3" data-img="assets/images/a3.png"><span>a3</span></button>
+				<button class="artwork" data-title="a4" data-img="assets/images/a4.png"><span>a4</span></button>
+				<button class="artwork" data-title="a5" data-img="assets/images/a5.png"><span>a5</span></button>
+				<button class="artwork" data-title="a6" data-img="assets/images/a6.png"><span>a6</span></button>
+				<button class="artwork" data-title="a7" data-img="assets/images/a7.png"><span>a7</span></button>
+				<button class="artwork" data-title="a8" data-img="assets/images/a8.png"><span>a8</span></button>
+				<button class="artwork" data-title="a9" data-img="assets/images/a9.png"><span>a9</span></button>
+				<button class="artwork" data-title="a10" data-img="assets/images/a10.png"><span>a10</span></button>
+			</div>
+		</section>
+
+		<section id="artist" class="section section--about">
+			<h1>Artist</h1>
+			<p>심혜원 소개 내용</p>
+		</section>
+	</main>
+
+	<!-- 작품 상세 모달 -->
+	<dialog id="artwork-modal" class="modal">
+		<div class="modal__body">
+			<button class="modal__close" aria-label="닫기">×</button>
+			<figure class="modal__figure">
+				<img id="modal-image" alt="">
+			</figure>
+			<div id="modal-desc" class="modal__desc">
+				<div id="modal-desc-content"></div>
+				<div id="modal-meta" class="modal__meta"></div>
+			</div>
+		</div>
+	</dialog>
+
+	<footer class="site-footer">
+		<p>© <span id="year"></span> Sim HyeWon Artwork Archive</p>
+	</footer>
+
+	<script src="assets/js/main.js"></script>
+</body>
+	</html>
+
+
