@@ -43,25 +43,43 @@
 		</section>
 
 		<section id="artwork" class="section section--artwork">
+			<h1>Artwork</h1>
+			<p>&nbsp;</p>
 			<h2 class="sr-only">Artwork</h2>
-			<div class="artworks-grid">
-				<!-- 각 아이템은 이미지가 있으면 data-img로 경로를 지정하세요 (예: assets/images/a1.jpg) -->
-				<button class="artwork" data-title="a1" data-img="assets/images/a1.png"><span>a1</span></button>
-				<button class="artwork" data-title="a2" data-img="assets/images/a2.png"><span>a2</span></button>
-				<button class="artwork" data-title="a3" data-img="assets/images/a3.png"><span>a3</span></button>
-				<button class="artwork" data-title="a4" data-img="assets/images/a4.png"><span>a4</span></button>
-				<button class="artwork" data-title="a5" data-img="assets/images/a5.png"><span>a5</span></button>
-				<button class="artwork" data-title="a6" data-img="assets/images/a6.png"><span>a6</span></button>
-				<button class="artwork" data-title="a7" data-img="assets/images/a7.png"><span>a7</span></button>
-				<button class="artwork" data-title="a8" data-img="assets/images/a8.png"><span>a8</span></button>
-				<button class="artwork" data-title="a9" data-img="assets/images/a9.png"><span>a9</span></button>
-				<button class="artwork" data-title="a10" data-img="assets/images/a10.png"><span>a10</span></button>
+			<div class="artworks-wrap">
+				<div class="artworks-col left">
+					<button class="artwork" data-title="thumnail3" data-img="assets/images/thumnail3.png"><span>thumbnail3</span></button>
+					<button class="artwork" data-title="thumbnail2" data-img="assets/images/thumbnail2.jpg"><span>thumbnail2</span></button>
+					<button class="artwork" data-title="p3" data-img="assets/images/p3.png"><span>p3</span></button>
+					<button class="artwork" data-title="p6" data-img="assets/images/p6.png"><span>p6</span></button>
+					<button class="artwork" data-title="p7" data-img="assets/images/p7.png"><span>p7</span></button>
+				</div>
+				<div class="artworks-col right">
+					<button class="artwork" data-title="thumbnail1" data-img="assets/images/thumbnail1.png"><span>thumbnail1</span></button>
+					<div class="artwork-row">
+						<button class="artwork" data-title="p5" data-img="assets/images/p5.png"><span>p5</span></button>
+						<button class="artwork" data-title="p4" data-img="assets/images/p4.png"><span>p4</span></button>
+					</div>
+					<button class="artwork" data-title="p1" data-img="assets/images/p1.jpg"><span>p1</span></button>
+					<button class="artwork" data-title="p2" data-img="assets/images/p2.png"><span>p2</span></button>
+					<button class="artwork" data-title="thumbnail4" data-img="assets/images/thumbnail4.jpg"><span>thumbnail4</span></button>
+					<button class="artwork" data-title="thumbnail5" data-img="assets/images/thumbnail5.png"><span>thumbnail5</span></button>
+					<button class="artwork" data-title="thumbnail6" data-img="assets/images/thumbnail6.png"><span>thumbnail6</span></button>
+				</div>
 			</div>
 		</section>
 
 		<section id="artist" class="section section--about">
 			<h1>Artist</h1>
-			<p>심혜원 소개 내용</p>
+			<br><br><br>
+			<h2>심혜원</h2>
+			
+			<p>2003.01.13 Seoul </p>
+			<br><br>
+			<p>2022~2026</p>
+			<p>Dongduk Women's University Double Major</p>
+			<p>1. Interior Design </p>
+			<p>2. Department of Painting</p>
 		</section>
 	</main>
 
@@ -73,8 +91,9 @@
 				<img id="modal-image" alt="">
 			</figure>
 			<div id="modal-desc" class="modal__desc">
-				<div id="modal-desc-content"></div>
 				<div id="modal-meta" class="modal__meta"></div>
+				<div id="modal-desc-content"></div>
+				<div id="modal-video" class="modal__video" style="display: none;"></div>
 			</div>
 		</div>
 	</dialog>
