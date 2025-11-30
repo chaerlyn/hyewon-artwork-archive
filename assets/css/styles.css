@@ -292,7 +292,10 @@ body {
 		flex-direction: column;  /* 모바일에서 p5, p4도 세로 배치 */
 		gap: 15px;
 	}
-	.artwork { min-height: 160px; }
+	.artwork { 
+		height: auto; 
+		min-height: 0;
+	}
 }
 
 
