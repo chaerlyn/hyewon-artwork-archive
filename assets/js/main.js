@@ -150,6 +150,7 @@ if (modal) {
 	};
 
 	const modalImg = document.getElementById('modal-image');
+	const modalImg2 = document.getElementById('modal-image-2');
 	const modalDesc = document.getElementById('modal-desc');
 	const modalDescContent = document.getElementById('modal-desc-content');
 	const modalMeta = document.getElementById('modal-meta');
@@ -160,6 +161,23 @@ if (modal) {
 			const src = btn.getAttribute('data-img') || '';
 			modalImg.src = src;
 			modalImg.alt = title;
+			// 추가 이미지가 있는 작품들 표시
+			if (title === 'thumbnail1') {
+				modalImg2.src = 'assets/images/thumbnail1-2.jpg';
+				modalImg2.alt = title + ' - 2';
+				modalImg2.style.display = 'block';
+			} else if (title === 'thumbnail5') {
+				modalImg2.src = 'assets/images/thumbnail5_2.png';
+				modalImg2.alt = title + ' - 2';
+				modalImg2.style.display = 'block';
+			} else if (title === 'thumbnail6') {
+				modalImg2.src = 'assets/images/thumbnail6_2.png';
+				modalImg2.alt = title + ' - 2';
+				modalImg2.style.display = 'block';
+			} else {
+				modalImg2.style.display = 'none';
+				modalImg2.src = '';
+			}
 			const custom = artworkDescriptions[title];
 			if (custom && typeof custom === 'object') {
 				modalDescContent.innerHTML = escapeHTML(custom.text).replace(/\n/g, '<br>');
