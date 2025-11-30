@@ -149,6 +149,13 @@ if (modal) {
 		'thumbnail6': 'GR5j8BSa0hE'
 	};
 
+	// 추가 이미지가 있는 작품들 매핑
+	const artworkAdditionalImages = {
+		'thumbnail1': 'assets/images/thumbnail1-2.jpg',
+		'thumbnail5': 'assets/images/thumbnail5_2.png',
+		'thumbnail6': 'assets/images/thumbnail6_2.png'
+	};
+
 	const modalImg = document.getElementById('modal-image');
 	const modalImg2 = document.getElementById('modal-image-2');
 	const modalDesc = document.getElementById('modal-desc');
@@ -161,22 +168,24 @@ if (modal) {
 			const src = btn.getAttribute('data-img') || '';
 			modalImg.src = src;
 			modalImg.alt = title;
-			// 추가 이미지가 있는 작품들 표시
-			if (title === 'thumbnail1') {
-				modalImg2.src = 'assets/images/thumbnail1-2.jpg';
-				modalImg2.alt = title + ' - 2';
-				modalImg2.style.display = 'block';
-			} else if (title === 'thumbnail5') {
-				modalImg2.src = 'assets/images/thumbnail5_2.png';
-				modalImg2.alt = title + ' - 2';
-				modalImg2.style.display = 'block';
-			} else if (title === 'thumbnail6') {
-				modalImg2.src = 'assets/images/thumbnail6_2.png';
-				modalImg2.alt = title + ' - 2';
-				modalImg2.style.display = 'block';
-			} else {
-				modalImg2.style.display = 'none';
-				modalImg2.src = '';
+			
+			// 추가 이미지 처리: 먼저 숨기고 src 비운 후, 해당 작품에 이미지가 있으면 로드
+			modalImg2.style.display = 'none';
+			modalImg2.src = '';
+			
+			const additionalImageSrc = artworkAdditionalImages[title];
+			if (additionalImageSrc) {
+				// 이미지 로드 완료 후 표시
+				const img = new Image();
+				img.onload = function() {
+					modalImg2.src = additionalImageSrc;
+					modalImg2.alt = title + ' - 2';
+					modalImg2.style.display = 'block';
+				};
+				img.onerror = function() {
+					modalImg2.style.display = 'none';
+				};
+				img.src = additionalImageSrc;
 			}
 			const custom = artworkDescriptions[title];
 			if (custom && typeof custom === 'object') {
