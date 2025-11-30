@@ -139,6 +139,16 @@ if (artworkButtons.length) {
 // Modal interactions
 const modal = document.getElementById('artwork-modal');
 if (modal) {
+	// 작품별 YouTube 영상 ID 매핑
+	const artworkVideos = {
+		'thumbnail1': 'z9u9nssaHdU',
+		'thumbnail2': 'PZSoOHhT0gQ',
+		'thumnail3': '-GZOuPElw-o',
+		'thumbnail4': 'ujHUmVPbg18',
+		'thumbnail5': 'l447fRP3C-o',
+		'thumbnail6': 'GR5j8BSa0hE'
+	};
+
 	const modalImg = document.getElementById('modal-image');
 	const modalDesc = document.getElementById('modal-desc');
 	const modalDescContent = document.getElementById('modal-desc-content');
@@ -161,10 +171,11 @@ if (modal) {
 				modalDescContent.textContent = `${title} 작품 상세 설명 예시입니다.`;
 				modalMeta.textContent = '';
 			}
-			// thumbnail1일 때만 YouTube 영상 표시
-			if (title === 'thumbnail1') {
+			// 해당 작품에 YouTube 영상이 있으면 표시
+			const videoId = artworkVideos[title];
+			if (videoId) {
 				modalVideo.style.display = 'block';
-				modalVideo.innerHTML = '<iframe width="100%" height="315" src="https://www.youtube.com/embed/z9u9nssaHdU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+				modalVideo.innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 			} else {
 				modalVideo.style.display = 'none';
 				modalVideo.innerHTML = '';
