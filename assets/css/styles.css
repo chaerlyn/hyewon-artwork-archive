@@ -37,7 +37,7 @@ body {
 	right: 0;
 	z-index: 20;
 	backdrop-filter: blur(8px);
-	background: color-mix(in oklab, black 75%, transparent);
+	background: color-mix(in oklab, var(--bg) 75%, transparent);
 	border-bottom: 1px solid rgba(255,255,255,.1);
 }
 .nav {
@@ -167,6 +167,116 @@ body {
 	color: var(--muted);
 	padding: 40px 10px 60px;
 	border-top: 1px solid #666;
+	position: relative;
+}
+.theme-toggle {
+	background: transparent;
+	border: 1px solid var(--fg);
+	color: var(--fg);
+	font-size: 14px;
+	padding: 6px 12px;
+	border-radius: 16px;
+	cursor: pointer;
+	margin-top: 20px;
+	transition: all 0.3s ease;
+}
+.theme-toggle:hover {
+	background: var(--fg);
+	color: var(--bg);
+	transform: scale(1.05);
+}
+
+/* Grey Mode */
+body.grey-mode {
+	--bg: #000000eb;
+	--fg: #ffffff;
+	--muted: #c7c7c7;
+	--accent: #ffffff;
+}
+body.grey-mode .site-header {
+	background: color-mix(in oklab, var(--bg) 75%, transparent);
+	border-bottom: 1px solid rgba(255,255,255,.1);
+}
+body.grey-mode .site-footer {
+	border-top: 1px solid #666;
+}
+body.grey-mode .modal {
+	background: rgba(0,0,0,.75);
+}
+body.grey-mode .modal::backdrop {
+	background: rgba(0,0,0,.75);
+}
+body.grey-mode .modal__body {
+	background: #0d0d0d;
+}
+body.grey-mode .modal__figure img {
+	background: #000;
+	border: 1px solid rgba(255, 255, 255, 0.329);
+}
+body.grey-mode .modal__desc {
+	border-top: 1px solid rgba(255,255,255,.08);
+}
+body.grey-mode .modal__meta {
+	border-bottom: 1px solid rgba(255,255,255,.08);
+	color: #e5e5e5;
+}
+
+/* Light Mode */
+body.light-mode {
+	--bg: #ffffff;
+	--fg: #000000;
+	--muted: #666666;
+	--accent: #000000;
+}
+body.light-mode .site-header {
+	background: color-mix(in oklab, var(--bg) 75%, transparent);
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+body.light-mode .site-footer {
+	border-top: 1px solid #ccc;
+}
+body.light-mode .theme-toggle {
+	border-color: var(--fg);
+}
+body.light-mode .theme-toggle:hover {
+	background: var(--fg);
+	color: var(--bg);
+}
+body.light-mode .modal {
+	background: rgba(255,255,255,.75);
+}
+body.light-mode .modal::backdrop {
+	background: rgba(255,255,255,.75);
+}
+body.light-mode .modal__body {
+	background: #ffffff;
+}
+body.light-mode .modal__figure img {
+	background: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.329);
+}
+body.light-mode .modal__desc {
+	border-top: 1px solid rgba(0,0,0,.08);
+}
+body.light-mode .modal__meta {
+	border-bottom: 1px solid rgba(0,0,0,.08);
+	color: #333;
+}
+body.light-mode .modal__close {
+	color: #ffffff;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+body.light-mode .artwork:hover {
+	box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+body.light-mode .section--about > p:first-of-type {
+	color: #000000;
+}
+body.light-mode .scroll-down {
+	border: 1px solid rgba(0,0,0,.2);
+}
+body.light-mode .divider-line {
+	border-top: 1px solid rgba(0, 0, 0, 0.795);
 }
 
 
@@ -292,9 +402,9 @@ body {
 		gap: 16px;
 		flex-wrap: wrap;
 	}
-	.title { font-size: clamp(20px, 4vw, 32px); }
-	.section--about h1 { font-size: clamp(20px, 4vw, 28px); }
-	.section--artwork h1 { font-size: clamp(20px, 4vw, 32px); }
+	.title { font-size: clamp(28px, 4vw, 32px); }
+	.section--about h1 { font-size: clamp(28px, 4vw, 28px); }
+	.section--artwork h1 { font-size: clamp(28px, 4vw, 32px); }
 	.section--about h2 { font-size: clamp(20px, 4vw, 32px); }
 	.section { min-height: auto; }
 	.section--home { min-height: 100svh; }

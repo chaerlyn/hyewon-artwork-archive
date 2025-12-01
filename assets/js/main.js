@@ -223,3 +223,47 @@ window.addEventListener('beforeunload', function(e) {
 	return ''; // 일부 브라우저에서는 return 값 필요
 });
 
+// 테마 토글 기능 (다크 -> 그레이 -> 라이트)
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+	// 저장된 테마 불러오기
+	const savedTheme = localStorage.getItem('theme') || 'dark';
+	
+	// 저장된 테마 적용
+	if (savedTheme === 'grey') {
+		document.body.classList.add('grey-mode');
+		themeToggle.textContent = 'Grey';
+	} else if (savedTheme === 'light') {
+		document.body.classList.add('light-mode');
+		themeToggle.textContent = 'Light';
+	} else {
+		themeToggle.textContent = 'Dark';
+	}
+	
+	themeToggle.addEventListener('click', () => {
+		// 현재 테마 확인
+		const hasGrey = document.body.classList.contains('grey-mode');
+		const hasLight = document.body.classList.contains('light-mode');
+		
+		// 모든 테마 클래스 제거
+		document.body.classList.remove('grey-mode', 'light-mode');
+		
+		// 다크 -> 그레이 -> 라이트 순으로 순환
+		if (!hasGrey && !hasLight) {
+			// 현재: 다크 -> 그레이로 변경
+			document.body.classList.add('grey-mode');
+			themeToggle.textContent = 'Grey';
+			localStorage.setItem('theme', 'grey');
+		} else if (hasGrey) {
+			// 현재: 그레이 -> 라이트로 변경
+			document.body.classList.add('light-mode');
+			themeToggle.textContent = 'Light';
+			localStorage.setItem('theme', 'light');
+		} else if (hasLight) {
+			// 현재: 라이트 -> 다크로 변경
+			themeToggle.textContent = 'Dark';
+			localStorage.setItem('theme', 'dark');
+		}
+	});
+}
+
