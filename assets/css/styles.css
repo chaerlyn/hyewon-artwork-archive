@@ -219,14 +219,6 @@ body {
 	object-fit: contain;
 	border: 1px solid rgba(255, 255, 255, 0.329);
 }
-.modal__image-2 {
-	margin-top: 20px;
-	width: 100%;
-	display: block;
-	background: #000;
-	object-fit: contain;
-	border: 1px solid rgba(255,255,255,.1);
-}
 .modal__desc {
 	padding: 18px 20px;
 	color: var(--muted);
