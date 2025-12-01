@@ -195,7 +195,7 @@ body {
 body.grey-mode {
 	--bg: #000000eb;
 	--fg: #ffffff;
-	--muted: #c7c7c7;
+	--muted: #d3d3d3;
 	--accent: #ffffff;
 }
 body.grey-mode .site-header {
@@ -230,7 +230,7 @@ body.grey-mode .modal__meta {
 body.light-mode {
 	--bg: #ffffff;
 	--fg: #000000;
-	--muted: #666666;
+	--muted: #3d3d3d;
 	--accent: #000000;
 }
 body.light-mode .site-header {
