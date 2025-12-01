@@ -402,9 +402,9 @@ body.light-mode .divider-line {
 		gap: 16px;
 		flex-wrap: wrap;
 	}
-	.title { font-size: clamp(28px, 4vw, 32px); }
-	.section--about h1 { font-size: clamp(28px, 4vw, 28px); }
-	.section--artwork h1 { font-size: clamp(28px, 4vw, 32px); }
+	.title { font-size: clamp(24px, 4vw, 32px); }
+	.section--about h1 { font-size: clamp(24px, 4vw, 28px); }
+	.section--artwork h1 { font-size: clamp(24px, 4vw, 32px); }
 	.section--about h2 { font-size: clamp(20px, 4vw, 32px); }
 	.section { min-height: auto; }
 	.section--home { min-height: 100svh; }
