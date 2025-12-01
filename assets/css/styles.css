@@ -213,7 +213,8 @@ body {
 .modal__figure { margin: 0; position: relative; display: grid; grid-template-rows: 1fr; z-index: 1; }
 .modal__figure img { 
 	width: 100%; 
-	height: 100%; 
+	height: auto; 
+	max-height: 100vh; /* 화면 높이를 넘지 않도록 */
 	display: block; 
 	background: #000; 
 	object-fit: contain;
