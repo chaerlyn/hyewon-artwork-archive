@@ -294,20 +294,22 @@ body {
 	}
 	.title { font-size: clamp(20px, 4vw, 32px); }
 	.section--about h1 { font-size: clamp(20px, 4vw, 28px); }
+	.section--artwork h1 { font-size: clamp(20px, 4vw, 32px); }
+	.section--about h2 { font-size: clamp(20px, 4vw, 32px); }
 	.section { min-height: auto; }
 	.section--home { min-height: 100svh; }
 	.section--artwork { padding-top: calc(10px + var(--header-h)); }
 	.artworks-wrap {
 		flex-direction: column;  /* 모바일에서는 세로 배치 */
 		width: 90%;
-		gap: 100px;
+		gap: 130px;
 	}
 	.artworks-col {
-		gap: 100px;
+		gap: 130px;
 	}
 	.artwork-row {
 		flex-direction: column;  /* 모바일에서 p5, p4도 세로 배치 */
-		gap: 100px;
+		gap: 130px;
 	}
 	.artwork { 
 		height: auto; 
