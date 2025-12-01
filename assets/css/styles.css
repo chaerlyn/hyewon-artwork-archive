@@ -88,19 +88,19 @@ body {
 	margin: 0 auto;
 	padding: 0 10px;
 	display: flex;
-	gap: 35px;          /* 좌우 컬럼 간격 */
+	gap: 40px;          /* 좌우 컬럼 간격 */
 }
 
 .artworks-col {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 25px;          /* 세로 간격 */
+	gap: 70px;          /* 세로 간격 */
 }
 
 .artwork-row {
 	display: flex;
-	gap: 20px;          /* p5, p4 사이 간격 */
+	gap: 40px;          /* p5, p4 사이 간격 */
 }
 
 .artwork-row .artwork {
@@ -300,14 +300,14 @@ body {
 	.artworks-wrap {
 		flex-direction: column;  /* 모바일에서는 세로 배치 */
 		width: 90%;
-		gap: 15px;
+		gap: 100px;
 	}
 	.artworks-col {
-		gap: 15px;
+		gap: 100px;
 	}
 	.artwork-row {
 		flex-direction: column;  /* 모바일에서 p5, p4도 세로 배치 */
-		gap: 15px;
+		gap: 100px;
 	}
 	.artwork { 
 		height: auto; 
