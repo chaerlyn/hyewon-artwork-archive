@@ -430,6 +430,9 @@ body.light-mode .divider-line {
 		height: auto; 
 		min-height: 0;
 	}
+	.about-content {
+		max-width: 100% !important;
+	}
 }
 
 

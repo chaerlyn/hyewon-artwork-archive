@@ -216,13 +216,6 @@ if (modal) {
 	});
 }
 
-// 페이지를 떠날 때 확인 메시지 표시
-window.addEventListener('beforeunload', function(e) {
-	e.preventDefault();
-	e.returnValue = ''; // Chrome에서는 빈 문자열이면 기본 메시지 사용
-	return ''; // 일부 브라우저에서는 return 값 필요
-});
-
 // 테마 토글 기능 (다크 -> 그레이 -> 라이트)
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
