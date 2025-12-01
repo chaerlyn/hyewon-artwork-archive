@@ -148,7 +148,12 @@ body {
 	padding: 120px 16px;
 	text-align: center;
 }
-.section--about > * { max-width: var(--maxw); width: 100%; }
+.about-content {
+	max-width: min(70%, 900px) !important;
+	margin: 0 auto;
+	width: 100%;
+}
+.section--about > *:not(.about-content) { max-width: var(--maxw); width: 100%; }
 .section--about h2 { margin: 0 0 10px; }
 .section--about h1 { margin: 0 0 20px; }
 .section--about h3 { 
