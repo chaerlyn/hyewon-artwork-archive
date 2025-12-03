@@ -143,7 +143,7 @@ if (modal) {
 	const artworkVimeoVideos = {
 		'thumbnail1': '1142442743?h=9926c69191',  // 균열
 		'thumbnail2': '1142447586?h=056bd4003c',  // 자화상, 알 수 없음
-		'thumnail3': '1142448067?h=068e737a43',   // island
+		'thumnail3': '1142447843?h=80e0fac460',   // island
 		'thumbnail4': '1142448067?h=068e737a43',  // island
 		'thumbnail5': '1142449419?h=7613674724',  // Noise
 		'thumbnail6': '1142425206?h=00a89e519b'   // 가모우 마사코의 관찰일지
