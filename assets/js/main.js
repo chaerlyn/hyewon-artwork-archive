@@ -139,14 +139,14 @@ if (artworkButtons.length) {
 // Modal interactions
 const modal = document.getElementById('artwork-modal');
 if (modal) {
-	// 작품별 YouTube 영상 ID 매핑
-	const artworkVideos = {
-		'thumbnail1': 'z9u9nssaHdU',
-		'thumbnail2': 'PZSoOHhT0gQ',
-		'thumnail3': '-GZOuPElw-o',
-		'thumbnail4': 'ujHUmVPbg18',
-		'thumbnail5': 'l447fRP3C-o',
-		'thumbnail6': 'GR5j8BSa0hE'
+	// 작품별 Vimeo 영상 매핑 (ID 또는 전체 URL)
+	const artworkVimeoVideos = {
+		'thumbnail1': '1142442743?h=9926c69191',  // 균열
+		'thumbnail2': '1142447586?h=056bd4003c',  // 자화상, 알 수 없음
+		'thumnail3': '1142448067?h=068e737a43',   // island
+		'thumbnail4': '1142448067?h=068e737a43',  // island
+		'thumbnail5': '1142449419?h=7613674724',  // Noise
+		'thumbnail6': '1142425206?h=00a89e519b'   // 가모우 마사코의 관찰일지
 	};
 
 	const modalImg = document.getElementById('modal-image');
@@ -171,11 +171,95 @@ if (modal) {
 				modalDescContent.textContent = `${title} 작품 상세 설명 예시입니다.`;
 				modalMeta.textContent = '';
 			}
-			// 해당 작품에 YouTube 영상이 있으면 표시
-			const videoId = artworkVideos[title];
-			if (videoId) {
+			// 해당 작품에 Vimeo 영상이 있으면 표시
+			const vimeoId = artworkVimeoVideos[title];
+			if (vimeoId) {
+				// Vimeo 영상: 초기에는 썸네일과 재생 버튼만 표시
 				modalVideo.style.display = 'block';
-				modalVideo.innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+				const vimeoVideoId = vimeoId.split('?')[0]; // ID만 추출
+				
+				// Vimeo oEmbed API로 영상 비율 가져오기
+				fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoVideoId}`)
+					.then(response => response.json())
+					.then(data => {
+						const aspectRatio = (data.height / data.width) * 100;
+						modalVideo.style.paddingBottom = `${aspectRatio}%`;
+						
+						modalVideo.innerHTML = `
+							<div class="vimeo-wrapper" data-vimeo-id="${vimeoId}">
+								<div class="vimeo-thumbnail">
+									<img src="https://vumbnail.com/${vimeoVideoId}.jpg" alt="Video thumbnail" onerror="this.style.display='none'">
+									<button class="vimeo-play-button" aria-label="재생">
+										<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M8 5v14l11-7z" fill="#000"/>
+										</svg>
+									</button>
+								</div>
+							</div>
+						`;
+						
+						// 재생 버튼 클릭 시 iframe 로드
+						const playButton = modalVideo.querySelector('.vimeo-play-button');
+						const thumbnail = modalVideo.querySelector('.vimeo-thumbnail');
+						if (playButton && thumbnail) {
+							const loadVideo = function() {
+								const wrapper = modalVideo.querySelector('.vimeo-wrapper');
+								const videoId = wrapper.getAttribute('data-vimeo-id');
+								const currentVideoId = videoId.split('?')[0]; // ID만 추출
+								modalVideo.innerHTML = `<iframe id="vimeo-player-${currentVideoId}" title=0 src="https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=0&byline=0&title=0&portrait=0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>`;
+								// Vimeo Player API를 사용하여 자동 재생 보장
+								const iframe = modalVideo.querySelector(`#vimeo-player-${currentVideoId}`);
+								if (iframe && typeof Vimeo !== 'undefined') {
+									const player = new Vimeo.Player(iframe);
+									player.ready().then(() => {
+										player.play().catch(err => {
+											console.log('자동 재생 실패:', err);
+										});
+									});
+								}
+							};
+							playButton.addEventListener('click', loadVideo);
+							thumbnail.addEventListener('click', loadVideo);
+						}
+					})
+					.catch(err => {
+						console.log('Vimeo API 오류:', err);
+						// API 실패 시 기본 16:9 비율 사용
+						modalVideo.style.paddingBottom = '56.25%';
+						modalVideo.innerHTML = `
+							<div class="vimeo-wrapper" data-vimeo-id="${vimeoId}">
+								<div class="vimeo-thumbnail">
+									<img src="https://vumbnail.com/${vimeoVideoId}.jpg" alt="Video thumbnail" onerror="this.style.display='none'">
+									<button class="vimeo-play-button" aria-label="재생">
+										<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M8 5v14l11-7z" fill="#000"/>
+										</svg>
+									</button>
+								</div>
+							</div>
+						`;
+						const playButton = modalVideo.querySelector('.vimeo-play-button');
+						const thumbnail = modalVideo.querySelector('.vimeo-thumbnail');
+						if (playButton && thumbnail) {
+							const loadVideo = function() {
+								const wrapper = modalVideo.querySelector('.vimeo-wrapper');
+								const videoId = wrapper.getAttribute('data-vimeo-id');
+								const currentVideoId = videoId.split('?')[0];
+								modalVideo.innerHTML = `<iframe id="vimeo-player-${currentVideoId}" title=0 src="https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&muted=0&byline=0&title=0&portrait=0" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>`;
+								const iframe = modalVideo.querySelector(`#vimeo-player-${currentVideoId}`);
+								if (iframe && typeof Vimeo !== 'undefined') {
+									const player = new Vimeo.Player(iframe);
+									player.ready().then(() => {
+										player.play().catch(err => {
+											console.log('자동 재생 실패:', err);
+										});
+									});
+								}
+							};
+							playButton.addEventListener('click', loadVideo);
+							thumbnail.addEventListener('click', loadVideo);
+						}
+					});
 			} else {
 				modalVideo.style.display = 'none';
 				modalVideo.innerHTML = '';
