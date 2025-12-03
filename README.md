@@ -1,7 +1,7 @@
 # Hyewon Artwork Archive
 심혜원작가의 졸업전시에 전시용 개인 작품 아카이브로 제작한 웹사이트입니다.  
 
-**Live Site**: https://chaerlyn.github.io/hyewon-artwork-archive/
+**Live Site**: https://hyewon-artwork-archive.netlify.app/
 
 ## 프로젝트 소개
 이 프로젝트는 작가 **심혜원**의 작업들을 아카이빙하기 위한 개인 웹사이트입니다.  
