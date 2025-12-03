@@ -219,10 +219,10 @@ if (modal) {
 // 테마 토글 기능 (다크 -> 그레이 -> 라이트)
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
-	// 저장된 테마 불러오기
-	const savedTheme = localStorage.getItem('theme') || 'dark';
+	// 저장된 테마 불러오기 (없으면 항상 다크 모드)
+	const savedTheme = localStorage.getItem('theme');
 	
-	// 저장된 테마 적용
+	// 저장된 테마가 있으면 적용, 없으면 다크 모드 유지
 	if (savedTheme === 'grey') {
 		document.body.classList.add('grey-mode');
 		themeToggle.textContent = 'Grey';
@@ -230,7 +230,10 @@ if (themeToggle) {
 		document.body.classList.add('light-mode');
 		themeToggle.textContent = 'Light';
 	} else {
+		// 기본값: 다크 모드 (시스템 설정 무시)
+		document.body.classList.remove('grey-mode', 'light-mode');
 		themeToggle.textContent = 'Dark';
+		// localStorage에 명시적으로 저장하지 않음 (기본값 유지)
 	}
 	
 	themeToggle.addEventListener('click', () => {
